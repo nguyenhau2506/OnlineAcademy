@@ -1,0 +1,37 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.login, .signup {
+    height: 100%;
+}
+
+.login .btn-floating,
+.signup .btn-floating
+{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.divider:after, .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.login a,
+.signup a
+{
+    color: #3b71ca;
+}
+
+.alert-floating {
+    margin-bottom: 120px!important;
+    margin-right: 2rem!important;
+    max-height: 48px!important;
+    right: -500px;
+}

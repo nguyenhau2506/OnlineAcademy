@@ -1,0 +1,85 @@
+<!-- ======= Header ======= -->
+<main id="main" class="pt-4" style="{{#if auth}} margin-top: 80px; {{/if}}">
+    <div class="container mb-0">
+        <h3 class="text-left fw-bold">
+            Search result
+        </h3>
+    </div>
+
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <p>Courses</p>
+            </div>
+
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {{#each row}}
+                    {{#each this}}
+                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                            <div class="course-item">
+                                <img
+                                        src={{this.thumbnail}}
+                                        class="img-fluid"
+                                        alt="..."
+                                />
+                                <div class="overlay"></div>
+                                {{#if this.is_watchlist}}
+                                    <form action="/my-courses/watch-list/remove-watchlist" method="POST">
+                                        <button class="add-to-watchlist" value={{id}} name="id" type="submit"
+                                                class="position-absolute end-0 top-0 me-2 mt-2"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Remove from watch list">
+                                            Remove from watchlist
+                                        </button>
+                                    </form>
+                                {{else}}
+                                    <form action="/my-courses/watch-list/add-watchlist" method="POST">
+                                        <button class="add-to-watchlist" value={{id}} name="id" type="submit"
+                                                class="position-absolute end-0 top-0 me-2 mt-2"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Add to watch list">
+                                            Add to watchlist
+                                        </button>
+                                    </form>
+                                {{/if}}
+                                <div class="course-content">
+                                    <div
+                                            class="d-flex justify-content-between align-items-center mb-3"
+                                    >
+                                        <h4>{{this.cat_name}}</h4>
+                                        {{#if_show this.old_price}}
+                                            <p class="price-is-sale">{{this.old_price}}</p>{{/if_show}}
+                                        <p class="price">{{fCurrency this.price}}</p>
+                                    </div>
+
+                                    <h3><a href="{{slug}}">{{this.name}}</a></h3>
+
+                                    <div
+                                            class="trainer d-flex justify-content-between align-items-center"
+                                    >
+                                        <div class="trainer-profile d-flex align-items-center">
+                                            <i class="fa-solid fa-chalkboard-user"></i>
+                                            <span>{{this.fullname}}</span>
+                                        </div>
+                                        <div class="trainer-rank d-flex align-items-center">
+                                            <i class="fa-sharp fa-solid fa-star"></i>&nbsp;{{fRatings this.avg_rating}}
+                                            <span>({{this.students_rating}}&nbsp;<i class="fa-solid fa-user"></i>)</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{/each}}
+
+            </div>
+        </div>
+    </section>
+</main>
+<!-- End #main -->
+<a
+        href="#"
+        class="back-to-top d-flex align-items-center justify-content-center"
+><i class="bi bi-arrow-up-short"></i></a>

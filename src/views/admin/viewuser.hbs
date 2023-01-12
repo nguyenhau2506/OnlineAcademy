@@ -1,0 +1,42 @@
+{{#section 'js'}}
+<script>
+    $('select option[value={{user.is_verified}}]').attr('selected','selected');
+</script>
+{{/section }}
+<div class="card">
+<div class="card-body">
+    <h5 class="card-title">Information of user: {{user.id}} </h5>
+    <form class="row g-3" method="post" action="/admin/updateuser">
+    <input hidden name="id" value="{{user.id}}"/>
+    <input hidden name="created_at" value="{{user.created_at}}"/>
+    <div class="col-md-12">
+        <label for="inputName5" class="form-label">Your Name</label>
+        <input type="text" readonly class="form-control" name="fullname" id="inputName5" value="{{user.fullname}}"/>
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail5" class="form-label">Email</label>
+        <input type="email" readonly class="form-control" id="inputEmail5" name="email" value="{{user.email}}"/>
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword5" class="form-label">Password</label>
+        <input type="password" readonly class="form-control" id="inputPassword5" name="password" value="{{user.password}}"/>
+    </div>
+    <div class="col-12">
+        <label for="inputAddress5" class="form-label">Role</label>
+        <input type="text" readonly class="form-control" id="inputAddres5s" name="role" value="{{user.role}}"/>
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">Verified</label>
+        <select id="inputState" name="is_verified" class="form-select" onplay="select(user.is_verified,this.children)">
+            <option value="true">true</option>
+            <option value="false">false</option>
+        </select>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+    </form>
+
+</div>
+</div>

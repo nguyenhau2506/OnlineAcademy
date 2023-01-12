@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet"
+    />
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    {{> bs4/header}}
+    <link rel="stylesheet" href="/public/stylesheets/home.css">
+    <link rel="stylesheet" href="/public/stylesheets/auth.css">
+    <title>{{this.title}}</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+</head>
+<body>
+{{> home/navbar }}
+{{{body}}}
+<div id="preloader"></div>
+
+{{> bs4/script}}
+<script type="text/javascript" src="/public/js/auth.js" ></script>
+
+<script
+        src="/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"
+></script>
+<!-- Template Main JS File -->
+<script src="/public/assets/js/main.js"></script>
+{{{_sections.js}}}
+</body>
+</html>

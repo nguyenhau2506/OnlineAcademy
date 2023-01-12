@@ -1,0 +1,204 @@
+{{#section "js"}}
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+
+{{/section}}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Course</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="teacher">Home</a>
+                </li>
+                <li class="breadcrumb-item active">course-edit</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+
+        {{!-- {{#each course}} --}}
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Update Course</h5>
+
+                        <!-- Multi Columns Form -->
+                        <form
+                            class="row g-3"
+                            method="post"
+                            id="identifier"
+                            enctype="multipart/form-data"
+                        >
+                            {{#each course}}
+                                <div class="col-md-12">
+                                    <label for="name" class="form-label">Course
+                                        Name</label>
+
+                                    <input
+                                        readonly
+                                        type="text"
+                                        class="form-control"
+                                        id="name"
+                                        value="{{this.name}}"
+                                        name="name"
+                                    />
+                                </div>
+                            {{/each}}
+
+                            {{#if chapters}}
+                                <div class="col-md-1">
+                                    <label
+                                        for="chapter"
+                                        class="form-label"
+                                    >Chapter</label>
+                                    <input
+                                        autocomplete="off"
+                                        required
+                                        type="text"
+                                        list="chapter"
+                                        class="form-control"
+                                        name="chapter"
+                                    />
+
+                                    <datalist id="chapter">
+                                        {{#each chapters}}
+                                            <option>
+                                                {{this.name}}</option>
+
+                                        {{/each}}
+                                    </datalist>
+                                </div>
+                            {{else}}
+                                <div class="col-md-1">
+                                    <label
+                                        for="chapter"
+                                        class="form-label"
+                                    >Chapter</label>
+                                    <input
+                                        autocomplete="off"
+                                        required
+                                        type="text"
+                                        list="chapter"
+                                        class="form-control"
+                                        name="chapter"
+                                    />
+
+                                    <datalist id="chapter">
+
+                                    </datalist>
+                                </div>
+                            {{/if}}
+
+                            <div class="col-md-2">
+                                <label
+                                    for="lesson"
+                                    class="form-label"
+                                >Name</label>
+
+                                <input
+                                    required
+                                    name="lesson"
+                                    type="text"
+                                    class="form-control"
+                                    id="lesson"
+                                    placeholder="Name lesson"
+                                />
+
+                            </div>
+
+                            <div class="col-md-9">
+                                <label for="videoURL" class="form-label">Video
+                                    URL</label>
+                                <input
+                                    required
+                                    accept="video/mp4,video/x-m4v,video/*,video/mkv"
+                                    name="videoURL"
+                                    type="file"
+                                    class="form-control"
+                                    id="videoURL"
+                                    placeholder="Video URL"
+                                />
+                            </div>
+                            {{#each course}}
+                                <div class="col-12">
+                                    <label
+                                        for="brief_description"
+                                        class="form-label"
+                                    >Brief description</label>
+                                    <input
+                                        required
+                                        name="brief_description"
+                                        type="text"
+                                        class="form-control"
+                                        id="brief_description"
+                                        value="{{this.brief_description}}"
+                                    />
+                                </div>
+                            {{/each}}
+                            {{#each course}}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            Detailed description
+                                        </h5>
+
+                                        <!-- Quill Editor Full -->
+
+                                        <div class="quill-editor-default">
+                                            <p>
+                                                {{{this.detail_description}}}
+                                            </p>
+                                        </div>
+                                        <!-- End Quill Editor Full -->
+                                        <textarea
+                                            name="detailed_description"
+                                            style="display:none"
+                                            id="hiddenArea"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                            <div class="col-md-2">
+                                <label
+                                    for="is_complete"
+                                    class="form-label"
+                                >State</label>
+                                <select
+                                    id="is_complete"
+                                    class="form-select"
+                                    name="is_complete"
+                                >
+                                    <option
+                                        value="true"
+                                        label="Complete"
+                                    ></option>
+                                    <option
+                                        value="false"
+                                        label="Unfinished"
+                                    ></option>
+                                </select>
+                            </div>
+
+                            <div class="text-center">
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                >Submit</button>
+
+                            </div>
+                        </form><!-- End Multi Columns Form -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- {{/each}} --}}
+    </section>
+</main>

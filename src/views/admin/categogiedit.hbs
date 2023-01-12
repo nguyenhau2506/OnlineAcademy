@@ -1,0 +1,18 @@
+{{#with category}}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Information of Categories: {{cat_id}} </h5>
+        <form class="row g-3" method="post" action="/admin/categories{{slug}}">
+        <input hidden type="text" class="form-control" name="slug" id="inputName5" value="{{slug}}"/>
+        <div class="col-md-12">
+            <label for="inputName5" class="form-label">Categogy Name</label>
+            <input  type="text" class="form-control" name="cat_name" id="inputName5" value="{{cat_name}}"/>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+        </form>
+    </div>
+</div>
+{{/with}}

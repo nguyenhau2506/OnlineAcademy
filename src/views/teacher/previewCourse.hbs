@@ -1,0 +1,88 @@
+{{#section 'css'}}
+    <link rel="stylesheet" href="/public/stylesheets/courseDetail.css">
+{{/section}}
+{{#each courseInfo}}
+<div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>{{name}}</h2>
+        <p>{{brief_description}}</p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Cource Details Section ======= -->
+<section id="course-details" class="course-details">
+    <section class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-7">
+            {{!-- <h3>Et enim incidunt fuga tempora</h3> --}}
+                <h3>More detailed:</h3>
+                <div>{{{detail_description}}}</div>
+            </div>
+            <div class="col-lg-4">
+                <img src={{thumbnail}} alt="">
+                
+                
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Rating</h5>
+              <p>{{fRatings avg_rating}}</p>   
+            </div>
+
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Course Fee</h5>
+              <p>{{fCurrency price}}</p>
+            </div>
+            
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Student enrolled</h5>
+              <p>{{fNumber students_learning}}</p>
+            </div>
+            
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Teacher</h5>
+              <p>{{../teacher.fullname}}</p>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Email</h5>
+              <p>{{../teacher.email}}</p>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            {{!-- <h3>Et enim incidunt fuga tempora</h3> --}}
+                <h3>Contents</h3>  
+            </div>
+        {{#each ../chapter}}
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        {{name}}
+                    </button>
+                </h2>
+                
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                      <ol class="list-group list-group-numbered">
+                        {{#each this.lessons}}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <a href="{{this.video_url}}" class="fw-bold">{{this.name}}</a>
+                </div>
+            </li>
+                        {{/each}}
+  
+</ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    
+    </section>
+</section>
+{{/each}}
+
+<!-- End Cource Details Section -->
+
+    <!-- ======= Cource Details Tabs Section ======= -->
+    
+  

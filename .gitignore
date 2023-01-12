@@ -1,0 +1,4 @@
+# Npm library
+.env
+/node_modules
+/public/uploads

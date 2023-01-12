@@ -1,0 +1,93 @@
+<main id="main" class="max-vh-100 vh-100 pt-5">
+    <div
+            class="signup container d-flex align-items-center justify-content-center h-100"
+    >
+        <div class="container">
+            <div class="row justify-content-center">
+                <form method="post" action="/admin/teachers" class="col-md-6 needs-validation" novalidate
+                      id="login-form">
+                    <h3 class="text-center fw-bold mb-4">Add Acount Teacher</h3>
+                    <!-- Fullname input -->
+                    <div class="input-group has-validation mb-4">
+                        <div class="form-floating">
+                            <input
+                                    type="text"
+                                    id="fullname"
+                                    class="form-control"
+                                    name="fullname"
+                                    placeholder="Fullname"
+                                    required
+                                    {{#if user}} value={{user.fullname}}{{/if}}
+                            />
+                            <label class="form-label" for="fullname">Fullname</label>
+                        </div>
+                        <div class="invalid-feedback">
+                            Username is required
+                        </div>
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-floating mb-4">
+                        <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                name="email"
+                                placeholder="Email"
+                                required
+                                {{#if user}} value={{user.email}}{{/if}}
+                        />
+                        <label class="form-label" for="email">email</label>
+                    </div>
+                    <!-- Password input -->
+                    <div class="input-group mb-4">
+                        <div class="form-floating">
+                            <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control pe-5"
+                                    placeholder="Password"
+                                    minlength="6"
+                                    maxlength="64"
+                                    required
+                                    
+                            />
+                            <label class="form-label" for="password">Password</label>
+
+                        </div>
+                        <button
+                                class="btn border-0 d-flex align-items-center justify-content-center p-0 me-3 position-absolute top-50 end-0 translate-middle-y"
+                                style="z-index: 10;"
+                                id="show-password"
+                                type="button"
+                        >
+                            <svg aria-label="Show password" width="24" height="24" role="img" focusable="false">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button
+                            type="submit"
+                            class="btn btn-primary btn-block container-fluid"
+                    >Create
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{#if errMessage}}
+        <div class="position-absolute bottom-0 d-flex align-items-center alert alert-warning fade show " role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="16" height="16" role="img" aria-label="Warning:">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <strong class="me-2">Create failed!</strong> <span class="text-center text-wrap me-2">{{errMessage}}</span>
+            <button type="button" class="btn btn-close p-0" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {{/if}}
+</main>
+
+{{#section 'js'}}
+    <script scr="/public/js/auth.js"></script>
+{{/section}}

@@ -1,0 +1,9 @@
+.enroll-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;    
+    background-color: #13331c;
+    color: white;
+    border-radius: 20px;
+    font-weight: 700;
+    padding: 7px;
+}

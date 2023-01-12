@@ -1,0 +1,137 @@
+
+<div class="col-12">
+    <div class="card top-selling overflow-auto mt-10">
+
+    <div class="filter">
+       
+    </div>
+    <div class="card-body pb-0" style="margin-top: 54px;">
+        <h4 class="card-header d-flex justify-content-between" >
+            View Coure filter |
+            Giảng viên:{{teacher}} 
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="?teacher=all&cate={{cate}}">ALL</a></li>
+                {{#each this.teachers}}
+                    <li><a class="dropdown-item" href="?teacher={{fullname}}&cate={{../this.cate}}">{{fullname}}</a></li>
+                {{/each}}
+                </ul>
+            </div>
+            Lĩnh Vực:{{cate}} 
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+                <li><a class="dropdown-item" href="?cate=all&teacher={{teacher}}">ALL</a></li>
+                {{#each this.categories}}
+                    <li><a class="dropdown-item" href="?cate={{cat_name}}&teacher={{../this.teacher}}">{{cat_name}}</a></li>
+                {{/each}}
+                </ul>
+            </div>
+        </h4>
+        {{#if isEmpty}}
+        <h4 class="card-header">
+            <div class="">Không có dữ liệu</div>
+        </h4>
+<div
+                        class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
+                >
+                    <div class="course-item">
+                        <img
+                                src="/public/images/course-2.jpg"
+                                class="img-fluid"
+                                alt="..."
+                        />
+                        <div class="course-content">
+                            <div
+                                    class="d-flex justify-content-between align-items-center mb-3"
+                            >
+                                <h4>Marketing</h4>
+                                <p class="price">$250</p>
+                            </div>
+
+                            <h3>
+                                <a href="course-details.html">Search Engine Optimization</a>
+                            </h3>
+
+                            <div
+                                    class="trainer d-flex justify-content-between align-items-center"
+                            >
+                                <div class="trainer-profile d-flex align-items-center">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                    <span>Antonio</span>
+                                </div>
+                                <div class="trainer-rank d-flex align-items-center">
+                                    <i class="fa-sharp fa-solid fa-star"></i>&nbsp;4.5
+                                    <span>(65&nbsp;<i class="fa-solid fa-user"></i>)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {{else}}
+        <div class="row">
+
+        
+        {{#each this.course}}
+        
+        <div
+            class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
+        >
+        <div class="course-item">
+            <img
+                    src="{{thumbnail}}"
+                    class="img-fluid"
+                    alt="..."
+            />
+            <div class="course-content">
+                <div
+                        class="d-flex justify-content-between align-items-center mb-3"
+                >
+                    <h4></h4>
+                    <p class="price">${{price}}</p>
+                </div>
+
+                <h3>
+                    <a >{{name}}</a>
+                </h3>
+
+                <div
+                        class="trainer d-flex justify-content-between align-items-center"
+                >
+                    <div class="trainer-profile d-flex align-items-center">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <span>{{teacher_id}}</span>
+                    </div>
+                    <div class="trainer-rank d-flex align-items-center">
+                        <i class="fa-sharp fa-solid fa-star"></i>&nbsp;{{avg_rating}}
+                        <span>({{students_learning}}&nbsp;<i class="fa-solid fa-user"></i>)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        {{/each}}
+        </div>
+        {{/if}}
+        </tbody>
+        
+        </table>
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="?page={{prevpage}}">Back</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{nextpage}}">Next</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="course-item position-relative">
+    <div class="position-relative">
+        <img
+                src="{{thumbnail}}"
+                class="img-fluid"
+                alt="..."
+        />
+        <div class="overlay-watchlist"></div>
+    </div>
+    {{#if isWatchList}}
+        <form action="/my-courses/watch-list/remove-watchlist" method="POST">
+            <button value={{id}} name="id" type="submit" class="position-absolute end-0 top-0 me-2 mt-2"
+                    data-bs-toggle="tooltip" style="border: none; background-color: transparent; z-index: 100;"
+                    data-bs-placement="bottom" title="Remove from watch list">
+                <i class="fa fa-heart " style="color: #fff; font-size: 24px; z-index:100;" aria-hidden="true"></i>
+            </button>
+        </form>
+    {{else}}
+        <form action="/my-courses/watch-list/add-watchlist" method="POST">
+            <button value={{id}} name="id" type="submit" class="position-absolute end-0 top-0 me-2 mt-2"
+                    data-bs-toggle="tooltip" style="border: none; background-color: transparent; z-index: 100;"
+                    data-bs-placement="bottom" title="Add to watch list">
+                <i class="fa fa-heart-o" style="color: #fff; font-size: 24px; z-index:100;" aria-hidden="true"></i>
+            </button>
+        </form>
+    {{/if}}
+    <div class="course-content">
+        <div
+                class="d-flex justify-content-between align-items-center mb-3"
+        >
+            <h4 data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{cat_name}}">{{cat_name}}</h4>
+            {{#unless isLearning}}
+                <p class="price">{{fCurrency price}}</p>
+            {{/unless}}
+        </div>
+
+        <h3 class="mb-3 course-name" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{name}}"><a
+                href="{{slug}}">{{name}}</a></h3>
+        <div class="trainer-profile d-flex align-items-center mb-4">
+            <i class="fa-solid fa-chalkboard-user me-2"></i>
+            <span>{{teacher_name}}</span>
+        </div>
+        <div
+                class="trainer d-flex justify-content-end align-items-end pe-2"
+        >
+            <div class="trainer-rank d-flex align-items-center">
+                <div class="me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Avg rating">
+                    <i class="fa-sharp fa-solid fa-star"></i>{{fRatings avg_rating}}
+                </div>
+                <span data-bs-toggle="tooltip" data-bs-placement="top" title="Student enrolment">({{fNumber
+                        students_learning}}<i class="fa-solid fa-user"></i>)</span>
+            </div>
+        </div>
+    </div>
+</div>

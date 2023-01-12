@@ -1,0 +1,292 @@
+{{#section "js"}}
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/buffer.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/filetype.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/piexif.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/sortable.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/fileinput.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/themes/fa4/theme.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/vi.min.js"
+    ></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.js"
+    ></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() { $("#lightSlider").lightSlider( { item: 4,
+        loop: true, slideMove: 1, easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+        speed:600, responsive : [ { breakpoint:800, settings: { item:2,
+        slideMove:1, slideMargin:6, } }, { breakpoint:480, settings: { item:1,
+        slideMove:1 } }], } ); });
+    </script>
+    <script>
+        $('#input-id').fileinput({ language: 'vi', theme: 'fa4',
+        dropZoneEnabled:false , maxFileCount: 5, allowedFileExtensions: ['jpg',
+        'png', 'gif','pdf','mp4','mkv'], });
+    </script>
+
+    {{! <script>
+        $(form).on('submit',(e)=> { e.preventDefault(); const name =
+        $('#name').val(); $.get("course/is-available", `courseName=${name}`,
+        function (data) { if(data===false) { alert("Course name is already
+        exist"); } } ); })
+    </script> }}
+
+{{/section}}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Course</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="teacher">Home</a>
+                </li>
+                <li class="breadcrumb-item active">course</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <ul id="lightSlider">
+            {{#each courses}}
+
+                <!-- Card with an image on top -->
+                <li class="card" style="width: 18rem;">
+
+                    <img
+                        src={{this.thumbnail}}
+                        class="card-img-top"
+                        alt="..."
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{this.name}}
+                        </h5>
+                        <p class="card-text">
+                            {{this.brief_description}}
+                        </p>
+                        <h4 class="d-flex justify-content-end">
+
+                            <a
+                                style="margin-right: 2px;"
+                                href="/teacher/detail-course{{this.slug}}"
+                                class="btn btn-primary"
+                            ><i class="bi bi-pencil-square"></i>
+                                Preview</a>
+                            <a
+                                href="/teacher/teacher-update-course/{{this.id}}"
+                                class="btn btn-primary"
+                            ><i class="bi bi-pencil-square"></i>
+                                Edit</a>
+                        </h4>
+
+                    </div>
+                </li>
+                <!-- End Card with an image on top -->
+
+            {{/each}}
+
+        </ul>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-plus-circle"></i>
+                            Add new course
+                        </h5>
+
+                        <!-- General Form Elements -->
+                        <form
+                            enctype="multipart/form-data"
+                            method="post"
+                            id="identifier"
+                        >
+                            <div class="row mb-3">
+                                <label
+                                    for="name"
+                                    class="col-sm-2 col-form-label"
+                                >Name course</label>
+                                <div class="col-sm-10">
+                                    <input
+                                        required
+                                        name="name"
+                                        type="text"
+                                        class="form-control"
+                                        id="name"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label
+                                    for="brief_description"
+                                    class="col-sm-2 col-form-label"
+                                >
+                                    Brief description
+                                </label>
+                                <div class="col-sm-10">
+                                    <input
+                                        required
+                                        name="brief_description"
+                                        type="text"
+                                        class="form-control"
+                                        id="brief_description"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label
+                                    for="price"
+                                    class="col-sm-2 col-form-label"
+                                >
+                                    Cost of course
+                                </label>
+                                <div class="col-sm-10">
+                                    <input
+                                        required
+                                        name="price"
+                                        type="text"
+                                        class="form-control"
+                                        id="price"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Detais description</h5>
+
+                                    <!-- Quill Editor Default -->
+                                    <div class="quill-editor-default">
+                                        <p>Hello World!</p>
+                                        <p>This is Quill
+                                            <strong>default</strong>
+                                            editor</p>
+                                    </div>
+                                    <textarea
+                                        name="detailed_description"
+                                        style="display:none"
+                                        id="hiddenArea"
+                                    ></textarea>
+                                    <!-- End Quill Editor Default -->
+
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label
+                                    for="videoInput"
+                                    class="col-sm-2 col-form-label"
+                                >
+                                    Preview video URL
+                                </label>
+                                <div class="col-sm-10">
+                                    <input
+                                        required
+                                        accept="video/mp4,video/x-m4v,video/*,video/mkv"
+                                        name="inputFile"
+                                        type="file"
+                                        class="form-control"
+                                        id="videoInput"
+                                        data-preview-file-type="text"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label
+                                    for="imageInput"
+                                    class="col-sm-2 col-form-label"
+                                >
+                                    Thumbnail
+                                </label>
+                                <div class="col-sm-10">
+                                    <input
+                                        accept="image/png, image/gif, image/jpeg"
+                                        required
+                                        name="inputFile"
+                                        type="file"
+                                        class="form-control"
+                                        id="imageInput"
+                                        data-preview-file-type="text"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label
+                                    for="cat_id"
+                                    class="form-label col-sm-2 col-form-label"
+                                >Category</label>
+                                <div class="col-sm-2">
+
+                                    <select
+                                        id="cat_id"
+                                        name="cat_id"
+                                        class="form-select"
+                                    >
+                                        {{#each categories}}
+                                            <option
+                                                value="{{this.cat_id}}"
+                                                label="{{this.cat_name}}"
+                                                style="font-weight: bold"
+                                            >
+                                                {{#each this.children}}
+                                                    <option
+                                                        value="{{this.cat_id}}"
+                                                    >&nbsp
+                                                        {{this.cat_name}}</option>
+                                                {{/each}}
+                                            </option>
+
+                                        {{/each}}
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Submit Form
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                        <!-- End General Form Elements -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<a
+    href="#"
+    class="back-to-top d-flex align-items-center justify-content-center"
+><i class="bi bi-arrow-up-short"></i></a>

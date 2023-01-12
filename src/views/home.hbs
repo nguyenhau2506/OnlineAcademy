@@ -1,0 +1,329 @@
+<!-- ======= Header ======= -->
+{{#if auth}}
+{{else}}
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="info d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2 data-aos="fade-down">
+                            Welcome to
+                            <span>academyX</span>
+                        </h2>
+                        <p data-aos="fade-up">
+                            The online course website, where you can find out the suitable course.
+
+                            Our online courses are free or pay fee to download and will include topics that may be of
+                            interest for you for the future to learn
+                            more about. Our main topics covered include.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+                id="hero-carousel"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                data-bs-interval="5000"
+        >
+            <div
+                    class="carousel-item active"
+                    style="
+            background-image: url(/public/images/hero-carousel-1.jpg);
+          "
+            ></div>
+            <div
+                    class="carousel-item"
+                    style="
+            background-image: url(/public/images/hero-carousel-2.jpg);
+          "
+            ></div>
+            <div
+                    class="carousel-item"
+                    style="
+            background-image: url(/public/images/hero-carousel-3.jpg);
+          "
+            ></div>
+            <div
+                    class="carousel-item"
+                    style="
+            background-image: url(/public/images/hero-carousel-4.jpg);
+          "
+            ></div>
+
+            <a
+                    class="carousel-control-prev"
+                    href="#hero-carousel"
+                    role="button"
+                    data-bs-slide="prev"
+            >
+          <span
+                  class="carousel-control-prev-icon bi bi-chevron-left"
+                  aria-hidden="true"
+          ></span>
+            </a>
+
+            <a
+                    class="carousel-control-next"
+                    href="#hero-carousel"
+                    role="button"
+                    data-bs-slide="next"
+            >
+          <span
+                  class="carousel-control-next-icon bi bi-chevron-right"
+                  aria-hidden="true"
+          ></span>
+            </a>
+        </div>
+    </section>
+    <!-- End Hero Section -->
+{{/if}}
+
+<main id="main" class="pt-4" style="{{#if auth}} margin-top: 80px; {{/if}}">
+    {{#if auth}}
+        <div class="container mb-4">
+            <h3 class="text-left fw-bold">
+                Let's start learning, {{authUser.fullname}}
+            </h3>
+        </div>
+    {{else}}
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="why-us" class="why-us">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-4 d-flex align-items-stretch">
+                        <div class="content">
+                            <h3>Why Choose academyX?</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Duis aute irure dolor in reprehenderit Asperiores dolores sed
+                                et. Tenetur quia eos. Autem tempore quibusdam vel
+                                necessitatibus optio ad corporis.
+                            </p>
+                            {{!-- <div class="text-center">
+                                <a href="/" class="more-btn">Learn More
+                                    <i class="bx bx-chevron-right"></i></a>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <div
+                            class="col-lg-8 d-flex align-items-stretch"
+                            data-aos="zoom-in"
+                            data-aos-delay="100"
+                    >
+                        <div class="icon-boxes d-flex flex-column justify-content-center">
+                            <div class="row">
+                                <div class="col-xl-4 d-flex align-items-stretch">
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <i class="fa-solid fa-file"></i>
+                                        <h4>Corporis voluptates sit</h4>
+                                        <p>
+                                            Consequuntur sunt aut quasi enim aliquam quae harum
+                                            pariatur laboris nisi ut aliquip
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 d-flex align-items-stretch">
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <i class="fa-solid fa-cube"></i>
+                                        <h4>Ullamco laboris ladore pan</h4>
+                                        <p>
+                                            Excepteur sint occaecat cupidatat non proident, sunt in
+                                            culpa qui officia deserunt
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 d-flex align-items-stretch">
+                                    <div class="icon-box mt-4 mt-xl-0">
+                                        <i class="fa-solid fa-image"></i>
+                                        <h4>Labore consequatur</h4>
+                                        <p>
+                                            Aut suscipit aut cum nemo deleniti aut omnis. Doloribus
+                                            ut maiores omnis facere
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End .content-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Why Us Section -->
+    {{/if}}
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Category Courses</h2>
+                <p>Trending category courses in last week &nbsp;<i class="fa-solid fa-fire"></i></p>
+            </div>
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {{#each catPopular}}
+                    <div class="col-lg-3 col-md-4">
+                        <div class="icon-box">
+                            <i class="ri-store-line" style="color: #ffbb2c"></i>
+                            <h3><a href="/categories{{this.slug}}">{{this.cat_name}} &nbsp; &nbsp;<i
+                                    class="fa-solid fa-user cat"></i>{{this.sum}}</a></h3>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <!-- End Features Section -->
+
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Courses</h2>
+                <p>Most popular Courses In Last Week&nbsp;<i class="fa-solid fa-fire"></i></p>
+            </div>
+
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {{#each coursesPopular}}
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                        <div class="course-item">
+                            <img
+                                    src={{this.thumbnail}}
+                                    class="img-fluid"
+                                    alt="..."
+                            />
+                            <div class="overlay"></div>
+                            {{#if this.is_watchlist}}
+                                <form action="/my-courses/watch-list/remove-watchlist" method="POST">
+                                    <button class="add-to-watchlist" value={{id}} name="id" type="submit"
+                                            class="position-absolute end-0 top-0 me-2 mt-2"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Remove from watch list">
+                                        Remove from watchlist
+                                    </button>
+                                </form>
+                            {{else}}
+                                <form action="/my-courses/watch-list/add-watchlist" method="POST">
+                                    <button class="add-to-watchlist" value={{id}} name="id" type="submit"
+                                            class="position-absolute end-0 top-0 me-2 mt-2"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Add to watch list">
+                                        Add to watchlist
+                                    </button>
+                                </form>
+                            {{/if}}
+                            <div class="course-content">
+                                <div
+                                        class="d-flex justify-content-between align-items-center mb-3"
+                                >
+                                    <h4>{{this.cat_name}}</h4>
+                                    {{#if_show this.old_price}}
+                                        <p class="price-is-sale">{{this.old_price}}</p>{{/if_show}}
+                                    <p class="price">{{fCurrency this.price}}</p>
+                                </div>
+
+                                <h3><a href="{{slug}}">{{this.name}}</a></h3>
+
+                                <div
+                                        class="trainer d-flex justify-content-between align-items-center"
+                                >
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <i class="fa-solid fa-chalkboard-user"></i>
+                                        <span>{{this.fullname}}</span>
+                                    </div>
+                                    <div class="trainer-rank d-flex align-items-center">
+                                        <i class="fa-sharp fa-solid fa-star"></i>&nbsp;{{fRatings this.avg_rating}}
+                                        <span>({{this.students_rating}}&nbsp;<i class="fa-solid fa-user"></i>)</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <!-- End Popular Courses Section -->
+
+    <!-- ======= 10 Most Seen Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Courses</h2>
+                <p>Newest Courses</p>
+            </div>
+
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {{#each coursesNewest}}
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="course-item">
+                        <img
+                                src={{this.thumbnail}}
+                                class="img-fluid"
+                                alt="..."
+                        />
+                        <div class="overlay"></div>
+                        {{#if this.is_watchlist}}
+                            <form action="/my-courses/watch-list/remove-watchlist" method="POST">
+                                <button class="add-to-watchlist" value={{id}} name="id" type="submit"
+                                        class="position-absolute end-0 top-0 me-2 mt-2"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Remove from watch list">
+                                    Remove from watchlist
+                                </button>
+                            </form>
+                        {{else}}
+                            <form action="/my-courses/watch-list/add-watchlist" method="POST">
+                                <button class="add-to-watchlist" value={{id}} name="id" type="submit"
+                                        class="position-absolute end-0 top-0 me-2 mt-2"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Add to watch list">
+                                    Add to watchlist
+                                </button>
+                            </form>
+                        {{/if}}
+                        <div class="course-content">
+                            <div
+                                    class="d-flex justify-content-between align-items-center mb-3"
+                            >
+                                <h4>{{this.cat_name}}</h4>
+                                {{#if_show this.old_price}}<p class="price-is-sale">{{this.old_price}}</p>{{/if_show}}
+                                <p class="price">{{fCurrency this.price}}</p>
+                            </div>
+
+                            <h3><a href={{slug}}>{{this.name}}</a></h3>
+
+                            <div
+                                    class="trainer d-flex justify-content-between align-items-center"
+                            >
+                                <div class="trainer-profile d-flex align-items-center">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                    <span>{{this.fullname}}</span>
+                                </div>
+                                <div class="trainer-rank d-flex align-items-center">
+                                    <i class="fa-sharp fa-solid fa-star"></i>&nbsp;{{fRatings this.avg_rating}}
+                                    <span>({{this.students_rating}}&nbsp;<i class="fa-solid fa-user"></i>)</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+        </div>
+    </section>
+    <!-- End Trainers Section -->
+</main>
+<!-- End #main -->
+
+<a
+        href="#"
+        class="back-to-top d-flex align-items-center justify-content-center"
+><i class="bi bi-arrow-up-short"></i></a>

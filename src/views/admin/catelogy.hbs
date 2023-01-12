@@ -1,0 +1,70 @@
+{{#section "js"}}
+
+    <script
+        src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"
+    ></script>
+    <script
+        src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+        type="text/javascript"
+    ></script>
+    <script>
+        function deletecategogy(slug){ console.log(`/admin/categories${slug}`)
+        $.ajax({ type: "delete", url: `/admin/categories${slug}`, success:
+        function (data, text) { alert("Delete Successfully")
+        location.replace('/admin/categories') console.log(data)
+        console.log(text) }, error: function (request, status, error) {
+        alert("Delete Fail"); } }); }
+    </script>
+    {{! location.reload(); }}
+{{/section}}
+<h4 class="card-header d-flex justify-content-between" style="margin-top:53px;">
+    Categogies
+    <a
+        class="btn btn-sm btn-outline-success text-right"
+        href="/admin/categories/add"
+        role="button"
+    >
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Add Categogy
+    </a>
+</h4>
+{{#if this.isEmpty}}
+    <div class="card-body">
+        <h5 class="card-title">
+            Không có dữ liệu!
+        </h5>
+    </div>
+{{else}}
+    {{#each this.categogies}}
+        <div class="card">
+            <h4 class="card-header d-flex justify-content-between">
+                {{cat_name}}
+                <button
+                    id={{cat_id}}
+                    class="btn btn-sm btn-outline-danger text-right"
+                    role="button"
+                    onclick="deletecategogy('{{slug}}')"
+                >
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                    Delete Catelogy
+                </button>
+            </h4>
+            <div class="card-body d-flex justify-content-between">
+                <div class="row">amount Course : {{amount_course}} </div>
+                <div class="row">amount Children : {{amount_children}}</div>
+                <a
+                    class="btn btn-sm btn-outline-primary"
+                    href="/admin/categories/edit{{slug}}"
+                    role="button"
+                    title="Edit"
+                >
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Edit
+                </a>
+            </div>
+            <div class="card-footer text-muted">
+                Footer
+            </div>
+        </div>
+    {{/each}}
+{{/if}}

@@ -1,0 +1,84 @@
+<div class="col-12" style="margin-top: 53px;">
+    <div class="card top-selling overflow-auto">
+
+        <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                    class="bi bi-three-dots"
+                ></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+        </div>
+        <div class="card-body pb-0">
+            <h4 class="card-header d-flex justify-content-between">
+                Manage Teacher
+                <a
+                    class="btn btn-sm btn-outline-success text-right"
+                    href="/admin/teachers/add"
+                    role="button"
+                >
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add Teacher
+                </a>
+            </h4>
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Is_verified</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#if isEmpty}}
+                        <tr>
+                            <td>none</td>
+                            <td>none</td>
+                            <td>none</td>
+                            <td>none</td>
+                            <td>none</td>
+                        </tr>
+                    {{else}}
+                        {{#each this.users}}
+                            <tr
+                                onclick="window.location.href = '/admin/viewuser/'+{{id}};"
+                            >
+                                <td class="fw-bold">{{id}}</td>
+                                <td>{{fullname}}</td>
+                                <td><a
+                                        href="#"
+                                        class="text-primary fw-bold"
+                                    >{{email}}</a></td>
+                                <td>{{role}}</td>
+                                <td class="fw-bold">{{is_verified}}</td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                </tbody>
+
+            </table>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="?page={{prevpage}}">Back</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{nextpage}}">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{#section "js"}}
+    <script>
+
+    </script>
+{{/section}}
